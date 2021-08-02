@@ -4,6 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Maven ###
+pom.xml.spring.datasource.*
+
 ### STS ###
 .apt_generated
 .classpath

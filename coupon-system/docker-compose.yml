@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  # service 1: defining mysql database
+  db:
+    image: mysql
+    container_name: coupon-system-db
+    environment:
+      MYSQL_DATABASE: coupon_system
+      MYSQL_ROOT_PASSWORD: 1234
+    ports:
+      - "3307:3306"
+    restart: always
+
+  # service 2: defining spring boot application
+  backend:
+    image: vitalyzl/coupons-backend
+    container_name: coupons-backend-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+      - db
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 1234

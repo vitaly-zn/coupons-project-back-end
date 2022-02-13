@@ -90,12 +90,16 @@ public class CouponSystemApplication {
 				customer2 = adminService.addCustomer(customer2);
 
 				////////////////////////////// - Company - ///////////////////////////////
+				LocalDate now = LocalDate.now();
 				Coupon coupon1 = new Coupon(0, 0, Category.SPORT, "FORD TITLE", "FORD description",
-						LocalDate.of(2020, 1, 1), LocalDate.of(2023, 12, 31), 3, 250000.99, "FORD image");
+						LocalDate.of(2020, 1, 1), LocalDate.of(now.plusDays(3).getYear(), 12, 31), 3, 250000.99,
+						"FORD image");
 				Coupon coupon2 = new Coupon(0, 0, Category.ELECTRICITY, "BUG TITLE", "BUG description",
-						LocalDate.of(2021, 3, 15), LocalDate.of(2021, 8, 20), 5, 650.99, "BUG image");
+						LocalDate.of(2021, 3, 15), LocalDate.of(now.getYear(), now.getMonth(), 20), 5, 650.99,
+						"BUG image");
 				Coupon coupon3 = new Coupon(0, 0, Category.ELECTRICITY, "expired", "expired description",
-						LocalDate.of(2020, 3, 15), LocalDate.of(2021, 7, 28), 22, 11.99, "expired image");
+						LocalDate.of(2020, 3, 15), LocalDate.of(now.getYear(), now.getMonth(), now.getDayOfMonth()), 22,
+						11.99, "expired image");
 
 				CompanyService companyService = (CompanyService) manager.login("ford@mail.com", "fordp",
 						ClientType.COMPANY);
